@@ -1,7 +1,7 @@
 import { _decorator, Component, find, instantiate, log, Node, Prefab, v3 } from 'cc';
 import Singleton from '../Base/Singleton';
 import { ResourcesManager } from '../Framework/ResourcesManager';
-import { HomeUIControllers } from './UIControllers/HomeUIControllers';
+import { HomeUIController } from './UIControllers/HomeUIController';
 import EventManager from '../Framework/EventManager';
 
 export class GameApp extends Singleton {
@@ -34,7 +34,7 @@ export class GameApp extends Singleton {
         let prefab = await ResourcesManager.Instance.loadRes('GUI/sword', Prefab);
         let node = instantiate(prefab) as Node;
         node.setParent(find('Canvas'));
-        node.addComponent(HomeUIControllers).Init();
+        node.addComponent(HomeUIController).Init();
 
         EventManager.Instance.On('testEvent', this.testEvent)
 
